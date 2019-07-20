@@ -1,0 +1,70 @@
+<div class="text-uppercase">
+    <h2>Nuevo Producto</h2>
+    <hr />
+</div>
+<!-- aviso -->
+<div class="alert alert-success" role="alert" *ngIf="alert.show">
+    {{ alert.message }}
+</div>
+<!-- formulario -->
+<form [formGroup]="form" (ngSubmit)="save()" autocomplete="off">
+    <div class="form-group">
+        <label for="product-title">Titulo <span  class="text-danger">*</span></label>
+        <input formControlName="title"
+            id="product-title"
+            placeholder="Agüita de Coco"
+            [ngClass]="{ 'is-invalid': (field('title').invalid && field('title').dirty) }"
+            class="form-control" 
+            type="text" />
+        <div class="invalid-feedback" 
+            *ngIf="(field('title').dirty && field('title').errors?.required)">
+            El titulo es requerido.
+        </div>
+        <div class="invalid-feedback" 
+            *ngIf="(field('title').dirty && field('title').errors?.minlength)">
+            El titulo debe tener mínimo tres caracteres.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="product-description">Descripción <span class="text-danger">*</span></label>
+        <textarea formControlName="description" 
+            id="product-description" 
+            placeholder="Liquido milagroso y bendito que todo lo cura. Extraído del coco, coloquialmente llamada 'Agüita de Coco'."
+            [ngClass]="{ 'is-invalid': (field('description').invalid && field('description').dirty) }"
+            class="form-control" 
+            rows="3" ></textarea>
+        <div class="invalid-feedback" 
+            *ngIf="(field('description').dirty && field('description').errors?.required)">
+            La descripción es requerido.
+        </div>
+        <div class="invalid-feedback" 
+            *ngIf="(field('description').dirty && field('description').errors?.minlength)">
+            La descripción debe tener mínimo tres caracteres.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="product-price">Precio <span class="text-danger">*</span></label>
+        <input formControlName="price" 
+            id="product-price" 
+            placeholder="10"
+            [ngClass]="{ 'is-invalid': (field('price').invalid && field('price').dirty) }"
+            class="form-control"
+            type="number" />
+        <div class="invalid-feedback" 
+            *ngIf="(field('price').dirty && field('price').errors?.required)">
+            El precio es requerido.
+        </div>
+        <div class="invalid-feedback" 
+            *ngIf="(field('price').dirty && field('price').errors?.min)">
+            El precio debe ser mayor a cero para ser valido.
+        </div>
+    </div>
+    <div class="form-group text-right">
+        <hr />
+        <button type="submit" 
+            [disabled]="form.invalid"
+            class="btn btn-primary">
+            Guardar
+        </button>
+    </div>
+</form>

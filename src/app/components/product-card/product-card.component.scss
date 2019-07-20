@@ -1,0 +1,16 @@
+.card {
+    height: 100%;
+    .card-header {
+        h4 {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    }
+    .card-body {
+        padding-bottom: 0;
+        .card-text {
+            font-size: 12px;
+        }
+    }
+}

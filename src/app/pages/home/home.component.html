@@ -1,0 +1,32 @@
+<div class="row justify-content-end">
+    <div class="col col-md-4 col-lg-2">
+        <div class="form-group">
+            <div class="input-group input-group-sm">
+                <input type="search" 
+                    class="form-control" 
+                    aria-describedby="search-addon" 
+                    (keyup)="onSearchProducts($event.target.value)" />
+                <div class="input-group-prepend">
+                    <!-- <button class="btn btn-outline-secondary" type="button" id="search-addon"></button> -->
+                    <span class="input-group-text bg-white border-left-0" id="search-addon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="none"
+                            stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                            <circle cx="14" cy="14" r="12" />
+                            <path d="M23 23 L30 30" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="isValid(); else norecords">
+    <div class="card-grid">
+        <app-product-card *ngFor="let product of (searching ? filtered : products)" [product]="product"></app-product-card>
+    </div>
+</div>
+<ng-template #norecords>
+    <div class="alert alert-warning" role="alert">
+        No hay registros para mostrar.
+    </div>
+</ng-template>

@@ -1,0 +1,13 @@
+<div class="card bg-white">
+    <div class="card-header bg-transparent border-bottom-0">
+        <h4 [title]="product.title">{{ product.title }}</h4>
+    </div>
+    <img src="/assets/images/coco.png" class="img-fluid" alt="Producto de coco">
+    <div class="card-body">
+        <p class="card-text text-muted">{{ product.description | truncate:[110, '...'] }}</p>
+    </div>
+    <div class="card-footer border-top-0 bg-transparent">
+        <h5 class="text-right">{{ product.price | currency }}</h5>
+        <button class="btn btn-block btn-outline-primary" (click)="addItemToCart(product)">Agregar al carrito</button>
+    </div>
+</div>
