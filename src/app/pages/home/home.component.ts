@@ -33,7 +33,10 @@ export class HomeComponent implements OnInit {
   onSearchProducts(query: string) {
     if (query.length >= 3) {
       const products = this.products.filter((product: Product) => {
-        return product.title.includes(query) || product.description.includes(query);
+        return (
+          product.title.toLowerCase().includes(query) ||
+          product.description.toLowerCase().includes(query)
+        );
       });
       this.filtered = products;
       this.searching = true;

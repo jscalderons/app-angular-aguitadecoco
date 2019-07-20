@@ -3,14 +3,16 @@ class Product {
     title: string;
     description: string;
     price: number;
+    discount?: number;
 }
 
 class Promotion {
-    id?: number;
+    id: number;
     description: string;
     startedAt: string;
     endedAt: string;
     discount: number;
+    products?: Product[];
 }
 
 class CartItem {

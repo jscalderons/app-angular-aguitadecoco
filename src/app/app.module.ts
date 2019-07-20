@@ -10,6 +10,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { CreateProductComponent } from './pages/create-product/create-product.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { CreatePromotionComponent } from './pages/create-promotion/create-promotion.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     HomeComponent,
     CreateProductComponent,
     NavbarComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    CartComponent,
+    ToolbarComponent,
+    CreatePromotionComponent
   ],
   imports: [
     BrowserModule,

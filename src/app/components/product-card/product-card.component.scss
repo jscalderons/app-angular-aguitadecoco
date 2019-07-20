@@ -9,8 +9,23 @@
     }
     .card-body {
         padding-bottom: 0;
+        height: 77px;
         .card-text {
             font-size: 12px;
         }
     }
+}
+
+.quantity-control {
+    border-top-color: var(--primary);
+    border-bottom-color: var(--primary);
+    border-right: none;
+    border-left: none;
+    text-align: center;
+}
+
+.text-discount {
+    text-decoration-line: line-through;
+    text-decoration-color: red;
+    font-size: 12px;
 }

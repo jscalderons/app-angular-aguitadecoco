@@ -1,0 +1,71 @@
+<div>
+    <app-toolbar title="Nueva Promoción">
+        <div toolbar-actions>
+            <button type="button" (click)="save()" [disabled]="form.invalid" class="btn btn-primary">
+                Guardar
+            </button>
+        </div>
+    </app-toolbar>
+    <!-- aviso -->
+    <div class="alert alert-success" role="alert" *ngIf="alert.show">
+        {{ alert.message }}
+    </div>
+    <!-- formulario -->
+    <form [formGroup]="form">
+        <div class="row">
+            <fieldset class="col-12 col-lg-5">
+                <legend>Detalles</legend>
+                <div class="form-group">
+                    <label for="promotion-description">Descripción <span class="text-danger">*</span></label>
+                    <textarea formControlName="description" id="promotion-description" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="promotion-discount" class="d-flex w-100 justify-content-between align-items-center">
+                        <div>Descuento <span class="text-danger">*</span></div>
+                        <div>{{ field('discount').value }}%</div>
+                    </label>
+                    <input formControlName="discount" type="range" id="promotion-discount" class="custom-range" step="5" min="5"
+                        max="100" />
+                </div>
+                <div class="form-group">
+                    <label for="promotion-started-at">Fecha de inicio</label>
+                    <input formControlName="startedAt" type="date" class="form-control" [min]="today" />
+                </div>
+                <div class="form-group">
+                    <label for="promotion-ended-at">Fecha de fin <span class="text-danger">*</span></label>
+                    <input formControlName="endedAt" type="date" class="form-control" [min]="field('startedAt').value || today" />
+                </div>
+            </fieldset>
+            
+            <fieldset class="col-12 col-lg-7" *ngIf="products">
+                <legend>Productos</legend>
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <th>
+                                <input type="checkbox"
+                                    [checked]="field('products').value.length === products.length"
+                                    (change)="onCheck($event.target.checked)" />
+                            </th>
+                            <th>Titulo</th>
+                            <th class="text-right">Precio</th>
+                            <th class="text-right">subtotal</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of products">
+                                <td>
+                                    <input type="checkbox" 
+                                        [checked]="isCheck(product.id)" 
+                                        (change)="onCheck($event.target.checked, product)" />
+                                </td>
+                                <td>{{ product.title }}</td>
+                                <td class="text-right">{{ product.price | currency }}</td>
+                                <td class="text-right">{{ getSubtotal(product.price) | currency }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </fieldset>
+        </div>
+    </form>
+</div>

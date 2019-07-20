@@ -1,6 +1,10 @@
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-template-rows: auto;
-    grid-gap: 1rem; 
+input[type=search] {
+    box-shadow: none;
+    width: 125px;
+    transition: width .5s ease-in-out;
+    &:focus {
+        width: 175px;
+        border: 1px solid #ced4da;
+    }
 }
+

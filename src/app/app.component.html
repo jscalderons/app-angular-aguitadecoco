@@ -3,11 +3,19 @@
     <app-navbar></app-navbar>
   </header>
   
-  <div class="app-main container-fluid">
-    <router-outlet></router-outlet>
+  <div class="app-main">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
   
   <footer class="app-footer">
-    Jhonathan Calderon
+    <div class="container py-4 d-flex align-items-center justify-content-end text-muted">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentcolor"
+        stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <path d="M10 9 L3 17 10 25 M22 9 L29 17 22 25 M18 7 L14 27" />
+      </svg>
+      <span class="d-block ml-1">By Jhonathan Calderon</span>
+    </div>
   </footer>
 </div>

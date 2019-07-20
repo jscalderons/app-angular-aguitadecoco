@@ -1,0 +1,29 @@
+<div *ngIf="getCart() as cart">
+    <app-toolbar title="Carrito" subtitle="Total: {{ getTotal() | currency }}">
+        <div toolbar-actions>
+            <button type="button" class="btn btn-sm btn-primary d-flex align-items-center" [disabled]="getCart().length === 0"
+                (click)="checkout()">
+                <svg id="i-creditcard" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="24" height="24" fill="none"
+                    stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M2 7 L2 25 30 25 30 7 Z M5 18 L9 18 M5 21 L11 21" />
+                    <path d="M2 11 L2 13 30 13 30 11 Z" fill="currentColor" />
+                </svg>
+                <span class="ml-2">Pagar</span>
+            </button>
+        </div>
+    </app-toolbar>
+    <div class="alert alert-success" role="alert" *ngIf="isCheckout">
+        <h4 class="alert-heading">Listo!</h4>
+        <p>Gracias por su compra!</p>
+    </div>
+    <div *ngIf="cart.length; else norecords">
+        <div class="card-grid">
+            <app-product-card *ngFor="let item of cart" [product]="item.product"></app-product-card>
+        </div>
+    </div>
+    <ng-template #norecords>
+        <div class="alert alert-info" role="alert">
+            <b>NOTA:</b> Su carrito de compras esta vacío.
+        </div>
+    </ng-template>
+</div>

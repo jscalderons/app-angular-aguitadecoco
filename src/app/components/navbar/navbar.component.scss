@@ -1,0 +1,11 @@
+.navbar {
+    padding: 1rem;
+    .navbar-toggler {
+        border: none;
+    }
+    .nav-item.active {
+        .nav-link {
+            color: var(--primary);
+        }
+    }
+}

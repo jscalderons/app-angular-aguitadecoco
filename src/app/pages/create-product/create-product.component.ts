@@ -46,7 +46,7 @@ export class CreateProductComponent {
     setTimeout(() => {
       this.alert.message = '';
       this.alert.show = false;
-    }, 5000);
+    }, 3000);
   }
 
   field(name: string): AbstractControl {

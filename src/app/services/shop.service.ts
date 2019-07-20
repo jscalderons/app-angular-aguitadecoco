@@ -9,7 +9,7 @@ export class ShopService {
 
   constructor() { }
 
-  addToCart(product: Product) {
+  add(product: Product) {
     if (this.cart.length > 0) {
       const findProduct = this.cart.find(
         (item: CartItem) => item.product.id === product.id
@@ -22,7 +22,22 @@ export class ShopService {
     } else {
       this.cart.push({ product, quantity: 1 });
     }
-
-    console.log(this.cart);
   }
+
+  remove(id: number) {
+    const items = this.cart.filter(item => item.product.id !== id);
+
+    this.cart = items;
+  }
+
+  clean() {
+    this.cart = [];
+  }
+
+  find(id: number): CartItem {
+    const product = this.cart.find(item => item.product.id === id);
+
+    return product;
+  }
+
 }
